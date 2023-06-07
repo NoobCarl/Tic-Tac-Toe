@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    font-size: 16px;
+}
+h1{
+    font-size: 32px;
+}
+html{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+header{
+    margin: 25px 0;
+}
+.row div{
+    font-size: 32px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.box{
+    font-size: 32px;
+    padding: 2em;
+}
+.box{
+    /* opacity: 0; */
+}
+.box.right{
+    border-right: solid 1px black;
+}
+.box.down{
+    border-bottom: solid 1px black;
+}
+.row{
+    display: flex;
+}
