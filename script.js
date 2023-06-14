@@ -1,17 +1,22 @@
+let form = document.getElementById("container-forms");
+let container = document.getElementById("container");
+const player = (name, sign, point) => {
+    return {name, sign, point};
+};
+let player1 ;
+let player2;
+let won = false;
 const boxes = document.querySelectorAll(".box");
 let turnPlayer = 1;
-const player = (name, sign) => {
-    return {name, sign};
-};
 let gameboard = (() => {
     let check = (sign) => {
-        if((boxes[0].innerHTML == sign && boxes[1].innerHTML == sign && boxes[2].innerHTML == sign) ||(boxes[3].innerHTML == sign && boxes[4].innerHTML == sign && boxes[5].innerHTML == sign) || (boxes[6].innerHTML == sign && boxes[7].innerHTML == sign && boxes[8].innerHTML == sign)){
+        if((boxes[0].firstChild.innerHTML == sign && boxes[1].firstChild.innerHTML == sign && boxes[2].firstChild.innerHTML == sign) ||(boxes[3].firstChild.innerHTML == sign && boxes[4].firstChild.innerHTML == sign && boxes[5].firstChild.innerHTML == sign) || (boxes[6].firstChild.innerHTML == sign && boxes[7].firstChild.innerHTML == sign && boxes[8].firstChild.innerHTML == sign)){
             return true;
         }
-        if((boxes[0].innerHTML == sign && boxes[3].innerHTML == sign && boxes[6].innerHTML == sign) ||(boxes[1].innerHTML == sign && boxes[4].innerHTML == sign && boxes[7].innerHTML == sign) || (boxes[2].innerHTML == sign && boxes[5].innerHTML == sign && boxes[8].innerHTML == sign)){
+        if((boxes[0].firstChild.innerHTML == sign && boxes[3].firstChild.innerHTML == sign && boxes[6].firstChild.innerHTML == sign) ||(boxes[1].firstChild.innerHTML == sign && boxes[4].firstChild.innerHTML == sign && boxes[7].firstChild.innerHTML == sign) || (boxes[2].firstChild.innerHTML == sign && boxes[5].firstChild.innerHTML == sign && boxes[8].firstChild.innerHTML == sign)){
             return true;
         }
-        if((boxes[0].innerHTML == sign && boxes[4].innerHTML == sign && boxes[8].innerHTML == sign) ||(boxes[2].innerHTML == sign && boxes[4].innerHTML == sign && boxes[7].innerHTML == sign)){
+        if((boxes[0].firstChild.innerHTML == sign && boxes[4].firstChild.innerHTML == sign && boxes[8].firstChild.innerHTML == sign) ||(boxes[2].firstChild.innerHTML == sign && boxes[4].firstChild.innerHTML == sign && boxes[7].firstChild.innerHTML == sign)){
             return true; 
         }
     }
@@ -20,24 +25,29 @@ let gameboard = (() => {
     };
 })();
 
-let player1 = player('Carl', 'X');
-let player2 = player('Sean', 'O');
-let won = false;
-
+form.addEventListener('submit', function(e){
+    e.preventDefault();
+    player1 = player(document.getElementById("player1-name").value, document.getElementById("player1-sign").value, 0);
+    player2 = player(document.getElementById("player2-name").value, document.getElementById("player2-sign").value, 0);
+    console.log(player1.name + player1.sign);
+    form.style.display = "none";
+    container.style.display = "flex";
+})
 boxes.forEach((box, i) => { 
     box.addEventListener("click", function(e){
-        if(box.innerHTML != player1.sign && box.innerHTML != player2.sign && !won){
+        if(box.firstChild.innerHTML != player1.sign && box.firstChild.innerHTML != player2.sign && !won){
             let sign;
             if(turnPlayer == 1) sign =  player1.sign;
             else sign = player2.sign;
-
-            box.innerHTML = boxes[i] = sign;
+            box.firstChild.innerHTML = boxes[i] = sign;
+            box.firstChild.style.opacity = "1";
             won = gameboard.check(sign);
             if(!won){
                 if(turnPlayer == 1) turnPlayer = 2;
                 else turnPlayer = 1;
             }else{
-                console.log("hei");
+                if(turnPlayer == 1) player1.point++;
+                else player2.point++;
             }
         }
     });

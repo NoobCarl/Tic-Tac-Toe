@@ -5,31 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Tic</title>
 </head>
 <body>
     <header>
         <h1>Tic Tac Toe</h1>
         <div>Made by Carl Dolor</div>
     </header>
-    <section>
-        <div id="container">
-            <div class="row">
-                <div id="box-1" class="box right down">9</div> 
-                <div id="box-2" class="box right down">9</div> 
-                <div id="box-3" class="box down">9</div>
+    <form action="" id="container-forms">
+        <div class="forms">
+            <div class="form">
+                <h2>Player 1</h2>    
+                <div>
+                    <label for="">Name</label>
+                    <input type="text" id="player1-name"required>
+                </div>
+                <div>
+                    <label for="">Sign</label>
+                    <input type="text" id="player1-sign" required>   
+                </div> 
             </div>
-            <div class="row">
-                <div id="box-4" class="box right down">9</div> 
-                <div id="box-5" class="box right down">9</div> 
-                <div id="box-6" class="box down">9</div>
+            <div class="form">
+                <h2>Player 2</h2>    
+                <div>
+                    <label for="">Name</label>
+                    <input type="text" id="player2-name" required>
+                </div>
+                <div>
+                    <label for="">Sign</label>
+                    <input type="text" id="player2-sign"required>   
+                </div> 
             </div>
-            <div class="row">
-                <div id="box-7" class="box right">9</div> 
-                <div id="box-8" class="box right">9</div> 
-                <div id="box-9" class="box">9</div>
-            </div>
-    </section>
+        </div>
+        <button id="submit">Submit</button>
+    </form>
+    <div id="container">
+        <div class="score"> <span id="player1-name">Player 1</span><span id="player1-score">0</span> <span>-</span> <span id="player2-score">0</span></div>
+        <div id="result"><h1>Player Won</h1></div>
+        <div class="row">
+            <div id="box-1" class="box right down"><span> X </span></div> 
+            <div id="box-2" class="box right down"><span> X </span></div> 
+            <div id="box-3" class="box down"><span> X </span></div>
+        </div>
+        <div class="row">
+            <div id="box-4" class="box right down"><span> X </span></div> 
+            <div id="box-5" class="box right down"><span> X </span></div> 
+            <div id="box-6" class="box down"><span> X </span></div>
+        </div>
+        <div class="row">
+            <div id="box-7" class="box right"><span> X </span></div> 
+            <div id="box-8" class="box right"><span> X </span></div> 
+            <div id="box-9" class="box"><span> X </span></div>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
