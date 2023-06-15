@@ -32,6 +32,7 @@ select{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 30px;
 }
 .forms{
@@ -45,7 +46,7 @@ select{
     gap: 1rem;
 } 
 #container-forms input{
-    padding: 1rem;
+    padding: 0.5rem;
 }
 label{
     display: inline-block;
@@ -100,8 +101,11 @@ label{
     margin-top: 1rem;
     gap: 1rem;
 }
-@media screen and (max-width: 500px){
+@media (orientation: portrait){
     .forms{
         flex-direction: column;
+    }
+    body{
+        margin: 50px;
     }
 }
