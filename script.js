@@ -21,7 +21,7 @@ let gameboard = (() => {
         if((boxes[0].firstChild.innerHTML == sign && boxes[3].firstChild.innerHTML == sign && boxes[6].firstChild.innerHTML == sign) ||(boxes[1].firstChild.innerHTML == sign && boxes[4].firstChild.innerHTML == sign && boxes[7].firstChild.innerHTML == sign) || (boxes[2].firstChild.innerHTML == sign && boxes[5].firstChild.innerHTML == sign && boxes[8].firstChild.innerHTML == sign)){
             return true;
         }
-        if((boxes[0].firstChild.innerHTML == sign && boxes[4].firstChild.innerHTML == sign && boxes[8].firstChild.innerHTML == sign) ||(boxes[2].firstChild.innerHTML == sign && boxes[4].firstChild.innerHTML == sign && boxes[7].firstChild.innerHTML == sign)){
+        if((boxes[0].firstChild.innerHTML == sign && boxes[4].firstChild.innerHTML == sign && boxes[8].firstChild.innerHTML == sign) ||(boxes[2].firstChild.innerHTML == sign && boxes[4].firstChild.innerHTML == sign && boxes[6].firstChild.innerHTML == sign)){
             return true; 
         }
     }
