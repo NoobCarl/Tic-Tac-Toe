@@ -51,12 +51,17 @@ header{
     font-size: 32px;
 }
 .box{
-    position: relative;
     font-size: 32px;
-    padding: 2em;
+    width: 150px;
+    height: 150px;
+    max-width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .box span{
     opacity: 0;
+    padding: 1rem;
 }
 .box.right{
     border-right: solid 1px black;
@@ -69,4 +74,11 @@ header{
 }
 #result{
     display: none;
+}
+.container{
+    display: none;
+    justify-content: center ;
+    flex-direction: row;
+    margin-top: 1rem;
+    gap: 1rem;
 }

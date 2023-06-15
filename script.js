@@ -1,11 +1,16 @@
 let form = document.getElementById("container-forms");
 let container = document.getElementById("container");
-const player = (name, sign, point) => {
-    return {name, sign, point};
+let result = document.getElementById("result");
+let playAgain = document.getElementById("play-again");
+let change = document.getElementById("change");
+let menu = document.getElementById("button-menu");
+const player = (name, sign) => {
+    return {name, sign};
 };
 let player1 ;
 let player2;
 let won = false;
+let count = 0;
 const boxes = document.querySelectorAll(".box");
 let turnPlayer = 1;
 let gameboard = (() => {
@@ -32,6 +37,7 @@ form.addEventListener('submit', function(e){
     console.log(player1.name + player1.sign);
     form.style.display = "none";
     container.style.display = "flex";
+    resetGrid();
 })
 boxes.forEach((box, i) => { 
     box.addEventListener("click", function(e){
@@ -42,13 +48,40 @@ boxes.forEach((box, i) => {
             box.firstChild.innerHTML = boxes[i] = sign;
             box.firstChild.style.opacity = "1";
             won = gameboard.check(sign);
-            if(!won){
+            if(!won && count != 9){
                 if(turnPlayer == 1) turnPlayer = 2;
                 else turnPlayer = 1;
-            }else{
-                if(turnPlayer == 1) player1.point++;
-                else player2.point++;
+                count++;
+            }
+            if(won){
+                if(turnPlayer == 1) result.innerHTML = player1.name + " Won!";
+                else result.innerHTML = player2.name + " Won!";
+                result.style.display = "block";
+                menu.style.display = "flex";
+            }else if(count == 9){
+                result.innerHTML = "Tie!";
+                result.style.display = "block";
+                menu.style.display = "flex";
             }
         }
     });
 });
+function resetGrid(){
+    boxes.forEach((box, i) => {
+        count = 0;
+        won = false;
+        boxes[i].firstChild.innerHTML = " ";
+    });
+    playAgain.parentElement.style.display = "none";
+    result.style.display = "none";
+}
+playAgain.addEventListener('click', function(e){
+    e.preventDefault();
+    resetGrid();
+})
+change.addEventListener('click', function(e){
+    e.preventDefault();
+    form.style.display = "flex";
+    container.style.display = "none";
+    menu.style.display = "none";
+})
